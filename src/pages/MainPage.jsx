@@ -8,6 +8,10 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rosybrown;
+
+  @media (max-width: 768px) {
+    overflow-y: none;
+  }
 `;
 
 const Container2 = styled.div`
