@@ -76,7 +76,7 @@ const SideBar = () => {
       <IconButton to="/search" $active={location.pathname === "/search"}>
         {location.pathname === "/search" ? <RiSearchFill /> : <RiSearchLine />}
       </IconButton>
-      <IconButton to="/feed" $active={location.pathname === "/feed"}>
+      <IconButton to="/" $active={location.pathname === "/"}>
         {location.pathname === "/feed" ? <HiCalendar /> : <HiOutlineCalendar />}
       </IconButton>
       <IconButton to="/shop" $active={location.pathname === "/shop"}>
