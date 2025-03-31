@@ -13,13 +13,13 @@ import {
 } from "react-icons/ri";
 
 const SidebarContainer = styled.aside`
-  background-color: #eee;
+  background-color: #f8f8f8;
   display: flex;
   justify-content: center;
   align-items: center;
 
   @media (min-width: 768px) {
-    width: 90px;
+    width: 100%;
     height: 100%;
     flex-direction: column;
   }

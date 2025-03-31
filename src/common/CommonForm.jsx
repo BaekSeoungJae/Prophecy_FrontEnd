@@ -9,21 +9,20 @@ const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: row;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const Body = styled.div`
   flex: 1;
   display: flex;
-  height: calc(100vh - 60px); // 헤더 높이만큼 제외
+  flex-direction: column;
 `;
 
 const SideBarWrapper = styled.div`
   width: 90px;
   height: 100vh;
-`;
-
-const HeaderWrapper = styled.div`
-  height: 60px;
 `;
 
 const Content = styled.main`
@@ -38,9 +37,7 @@ const CommonForm = () => {
         <SideBar />
       </SideBarWrapper>
       <Body>
-        <HeaderWrapper>
-          <Header />
-        </HeaderWrapper>
+        <Header />
         <Content>
           <Outlet />
         </Content>

@@ -5,11 +5,13 @@ import SearchPage from "./pages/SearchPage";
 import FeedPage from "./pages/FeedPage";
 import ShopPage from "./pages/ShopPage";
 import MyPage from "./pages/MyPage";
+import GlobalStyle from "./styles/GlobalStyle";
 
 const App = () => {
   return (
     <>
       <Router>
+        <GlobalStyle />
         <Routes>
           <Route element={<CommonForm />}>
             <Route path="/" element={<MainPage />} />
