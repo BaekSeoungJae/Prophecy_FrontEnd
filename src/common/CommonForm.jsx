@@ -31,11 +31,11 @@ const Content = styled.main`
   overflow-y: auto;
 `;
 
-const CommonForm = ({ toggleTheme }) => {
+const CommonForm = ({ toggleTheme, isDarkMode }) => {
   return (
     <Container>
       <SideBarWrapper>
-        <SideBar toggleTheme={toggleTheme} />
+        <SideBar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
       </SideBarWrapper>
       <Body>
         <Header />

@@ -11,7 +11,7 @@ import {
   RiSearchLine,
   RiSearchFill,
 } from "react-icons/ri";
-import { IoSettingsSharp } from "react-icons/io5";
+import SettingPopup from "../common/SettingPopup";
 
 const SidebarContainer = styled.aside`
   background-color: ${({ theme }) => theme.sidebarBg};
@@ -61,11 +61,13 @@ const IconButton = styled(Link)`
   border-radius: 20px;
   margin: 10px;
   text-decoration: none;
-  background-color: ${({ $active }) => ($active ? "#e2e2e2" : "transparent")};
+  background-color: ${({ $active, theme }) =>
+    $active ? theme.sideBtnBg : "transparent"};
+  transition: background-color 0.3s ease;
 
   &:hover {
     color: #2c2c2c;
-    background-color: #e0e0e0;
+    background-color: ${({ theme }) => theme.sideBtnBg};
   }
 
   @media (max-width: 768px) {
@@ -79,68 +81,9 @@ const IconButton = styled(Link)`
   }
 `;
 
-const SettingWrapper = styled.div`
-  position: relative;
-`;
-
-const SettingButton = styled.div`
-  color: #5a5a5a;
-  width: 70px;
-  height: 50px;
-  font-size: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
-  margin: 10px;
-
-  &:hover {
-    color: #2c2c2c;
-    background-color: #e0e0e0;
-  }
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-const SettingPopup = styled.div`
-  width: 150px;
-  height: 100px;
-  position: absolute;
-  left: 100px;
-  bottom: -10px;
-  background: white;
-  border: 1px solid #dadada;
-  border-radius: 8px;
-  padding: 10px;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const ThemeToggleButton = styled.button`
-  padding: 10px 14px;
-  background-color: #444;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-
-  &:hover {
-    background-color: #333;
-  }
-`;
-
-const SideBar = ({ toggleTheme }) => {
+const SideBar = ({ toggleTheme, isDarkMode }) => {
   const location = useLocation();
   const [isSettingOpen, setIsSettingOpen] = useState(false);
-
-  const toggleSetting = () => {
-    setIsSettingOpen((prev) => !prev);
-  };
 
   return (
     <SidebarContainer>
@@ -179,18 +122,12 @@ const SideBar = ({ toggleTheme }) => {
       </IconGroup>
 
       {/* 설정 버튼 + 팝업 */}
-      <SettingWrapper>
-        {isSettingOpen && (
-          <SettingPopup>
-            <ThemeToggleButton onClick={toggleTheme}>
-              🌙 다크모드
-            </ThemeToggleButton>
-          </SettingPopup>
-        )}
-        <SettingButton onClick={toggleSetting}>
-          <IoSettingsSharp />
-        </SettingButton>
-      </SettingWrapper>
+      <SettingPopup
+        isOpen={isSettingOpen}
+        setIsOpen={setIsSettingOpen}
+        toggleTheme={toggleTheme}
+        isDarkMode={isDarkMode}
+      />
     </SidebarContainer>
   );
 };

@@ -18,7 +18,11 @@ const App = () => {
       <Router>
         <GlobalStyle />
         <Routes>
-          <Route element={<CommonForm toggleTheme={toggleTheme} />}>
+          <Route
+            element={
+              <CommonForm toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
+            }
+          >
             <Route path="/" element={<MainPage />} />
             <Route path="/search" element={<SearchPage />} />
             <Route path="/feed" element={<FeedPage />} />
