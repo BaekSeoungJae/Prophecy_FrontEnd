@@ -2,7 +2,6 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  /* 기본 리셋 */
   * {
     margin: 0;
     padding: 0;
@@ -12,17 +11,18 @@ const GlobalStyle = createGlobalStyle`
   /* 스크롤바 스타일 - WebKit 브라우저 기준 */
   ::-webkit-scrollbar {
     width: 6px;
-    height: 6px;
   }
 
+  /* 움직이는 바 */
   ::-webkit-scrollbar-thumb {
-    background-color: #aaaaaa;
-    border-radius: 0; /* 👈 둥글기 제거 */
+    background-color: ${({ theme }) => theme.scrollBar};
+    border-radius: 0; 
   }
 
+  /* 스크롤바 배경경 */
   ::-webkit-scrollbar-track {
-    background-color: #f0f0f0;
-    border-radius: 0; /* 👈 둥글기 제거 */
+    background-color: ${({ theme }) => theme.scrollBg};
+    border-radius: 0;
   }
 `;
 

@@ -14,7 +14,8 @@ import {
 import { IoSettingsSharp } from "react-icons/io5";
 
 const SidebarContainer = styled.aside`
-  background-color: #f8f8f8;
+  background-color: ${({ theme }) => theme.sidebarBg};
+  transition: background-color 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,7 +120,21 @@ const SettingPopup = styled.div`
   justify-content: center;
 `;
 
-const SideBar = () => {
+const ThemeToggleButton = styled.button`
+  padding: 10px 14px;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+
+  &:hover {
+    background-color: #333;
+  }
+`;
+
+const SideBar = ({ toggleTheme }) => {
   const location = useLocation();
   const [isSettingOpen, setIsSettingOpen] = useState(false);
 
@@ -165,7 +180,13 @@ const SideBar = () => {
 
       {/* 설정 버튼 + 팝업 */}
       <SettingWrapper>
-        {isSettingOpen && <SettingPopup>설정</SettingPopup>}
+        {isSettingOpen && (
+          <SettingPopup>
+            <ThemeToggleButton onClick={toggleTheme}>
+              🌙 다크모드
+            </ThemeToggleButton>
+          </SettingPopup>
+        )}
         <SettingButton onClick={toggleSetting}>
           <IoSettingsSharp />
         </SettingButton>

@@ -8,6 +8,8 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: ${({ theme }) => theme.background};
+  transition: background-color 0.3s ease;
 `;
 
 const SearchPage = () => {

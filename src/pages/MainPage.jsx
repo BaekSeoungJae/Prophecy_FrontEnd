@@ -7,13 +7,13 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rosybrown;
 `;
 
 const Container2 = styled.div`
   width: 100%;
   height: calc(100vh - 60px); // 헤더 높이 제외
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.background};
+  transition: background-color 0.3s ease;
 `;
 
 const MainPage = () => {
