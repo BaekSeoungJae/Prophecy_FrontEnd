@@ -1,4 +1,3 @@
-// src/components/SidebarSettings.jsx
 import React, { useRef } from "react";
 import styled from "styled-components";
 import { IoSettingsSharp } from "react-icons/io5";
