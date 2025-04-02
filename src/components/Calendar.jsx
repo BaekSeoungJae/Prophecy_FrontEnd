@@ -36,7 +36,7 @@ const events = [
   },
 ];
 
-const CalendarView = () => {
+const CalendarView = ({ onDateClick }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedEvent, setSelectedEvent] = useState(null);
 
@@ -55,13 +55,16 @@ const CalendarView = () => {
         selectable
         views={["month"]}
         defaultView="month"
-        date={currentDate} // 현재 날짜 상태
-        onNavigate={handleNavigate} // 이동 버튼 클릭 시 날짜 변경
+        date={currentDate}
+        onNavigate={handleNavigate}
         popup
         style={{ height: "100%" }}
         onSelectEvent={(event) => setSelectedEvent(event)}
+        onSelectSlot={({ start }) => {
+          if (onDateClick) onDateClick(start);
+        }}
         components={{
-          toolbar: CustomToolbar, // ✅ 툴바 컴포넌트 연결
+          toolbar: CustomToolbar,
         }}
       />
     </Wrapper>

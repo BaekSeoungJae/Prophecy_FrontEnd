@@ -29,6 +29,9 @@ const SideBarWrapper = styled.div`
 const Content = styled.main`
   flex: 1;
   overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const CommonForm = ({ toggleTheme, isDarkMode }) => {

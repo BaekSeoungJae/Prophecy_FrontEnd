@@ -19,6 +19,7 @@ const SidebarContainer = styled.aside`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
 
   @media (min-width: 768px) {
     width: 100%;

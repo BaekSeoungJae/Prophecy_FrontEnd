@@ -8,13 +8,13 @@ export const lightTheme = {
   scrollBar: "#a3a3a3",
   scrollBg: "#ffffff",
   calendarBg: "#fcfcfc",
-  calendarOutRangeBg: "#f7f7f7",
+  calendarOutRangeBg: "#f3f3f3",
   calendarToolbarBg: "#f9f9f9",
   calendarHeaderBg: "#fafafa",
   calendarHeaderText: "#111",
   calendarBorder: "#dadada",
   calendarDateText: "#111",
-  otherText: "#111",
+  otherText: "#b8b8b8",
 };
 
 export const darkTheme = {
