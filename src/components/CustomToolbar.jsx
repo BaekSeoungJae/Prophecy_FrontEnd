@@ -7,6 +7,10 @@ const ToolbarWrapper = styled.div`
   align-items: center;
   padding: 12px 20px;
   position: relative;
+  background-color: ${({ theme }) => theme.calendarToolbarBg};
+  border-radius: 20px 20px 0 0;
+  border: 1px solid ${({ theme }) => theme.calendarToolbarBg};
+  transition: all 0.3s ease;
 `;
 
 const NavButton = styled.button`
@@ -14,7 +18,8 @@ const NavButton = styled.button`
   border: none;
   font-size: 18px;
   cursor: pointer;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.calendarHeaderText};
+  transition: all 0.3s ease;
 `;
 
 const MonthText = styled.div`
@@ -23,7 +28,8 @@ const MonthText = styled.div`
   transform: translateX(-50%);
   font-size: 20px;
   font-weight: bold;
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.calendarHeaderText};
+  transition: all 0.3s ease;
   cursor: pointer;
 
   &:hover {

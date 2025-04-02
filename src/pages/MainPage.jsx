@@ -16,6 +16,7 @@ const Container = styled.div`
 const MainWrapper = styled.div`
   width: 90%;
   height: 90%; // 헤더 높이 제외
+  background-color: ${({ theme }) => theme.calendarBg};
   border: 1px solid ${({ theme }) => theme.borderBg};
   transition: all 0.3s ease;
   border-radius: 20px;

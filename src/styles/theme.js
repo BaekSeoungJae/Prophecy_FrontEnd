@@ -7,6 +7,14 @@ export const lightTheme = {
   sideBtnBg: "#e2e2e2",
   scrollBar: "#a3a3a3",
   scrollBg: "#ffffff",
+  calendarBg: "#fcfcfc",
+  calendarOutRangeBg: "#f7f7f7",
+  calendarToolbarBg: "#f9f9f9",
+  calendarHeaderBg: "#fafafa",
+  calendarHeaderText: "#111",
+  calendarBorder: "#dadada",
+  calendarDateText: "#111",
+  otherText: "#111",
 };
 
 export const darkTheme = {
@@ -17,4 +25,12 @@ export const darkTheme = {
   sideBtnBg: "#969696",
   scrollBar: "#727272",
   scrollBg: "#444444",
+  calendarBg: "#5f5f5f",
+  calendarOutRangeBg: "#4e4e4e",
+  calendarToolbarBg: "#444",
+  calendarHeaderBg: "#3a3a3a",
+  calendarHeaderText: "#acacac",
+  calendarBorder: "#8d8d8d",
+  calendarDateText: "#cfcfcf",
+  otherText: "#202020",
 };
