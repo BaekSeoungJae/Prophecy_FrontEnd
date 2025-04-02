@@ -32,6 +32,8 @@ const Content = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: ${({ theme }) => theme.background};
+  transition: background-color 0.3s ease-in-out;
 `;
 
 const CommonForm = ({ toggleTheme, isDarkMode }) => {

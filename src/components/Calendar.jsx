@@ -29,7 +29,7 @@ const Wrapper = styled.div`
 
 const events = [
   {
-    title: "예언 테스트",
+    title: "테스트",
     start: new Date(),
     end: new Date(),
     allDay: true,

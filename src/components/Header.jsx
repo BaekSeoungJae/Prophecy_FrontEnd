@@ -6,7 +6,7 @@ const Container = styled.div`
   height: 60px;
   background-color: ${({ theme }) => theme.background};
   border-bottom: 1px solid ${({ theme }) => theme.borderBg};
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
 `;
 
 const Header = () => {

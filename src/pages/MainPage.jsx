@@ -8,8 +8,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: ${({ theme }) => theme.background};
-  transition: background-color 0.3s ease;
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
@@ -27,7 +25,7 @@ const MainWrapper = styled.div`
     showProphecy ? "calc(100% - 420px)" : "100%"};
   background-color: ${({ theme }) => theme.calendarBg};
   border: 1px solid ${({ theme }) => theme.borderBg};
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
   border-radius: 20px;
   flex-shrink: 0; // ✅ 모바일에서 아래에서 위로 슬라이드
   @media (max-width: 1200px) {
@@ -50,7 +48,7 @@ const ProphecyPanel = styled.div`
   background-color: ${({ theme }) => theme.calendarBg};
   border: 1px solid ${({ theme }) => theme.borderBg};
   transform: ${({ show }) => (show ? "translateX(0)" : "translateX(100%)")};
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
   z-index: 10;
   position: absolute;
   right: 0px;

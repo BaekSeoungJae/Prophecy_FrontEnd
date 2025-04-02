@@ -15,6 +15,8 @@ export const lightTheme = {
   calendarBorder: "#dadada",
   calendarDateText: "#111",
   otherText: "#b8b8b8",
+  todayBg: "#99acdb", // 오늘날짜
+  todayText: "#000000",
 };
 
 export const darkTheme = {
@@ -33,4 +35,6 @@ export const darkTheme = {
   calendarBorder: "#8d8d8d",
   calendarDateText: "#cfcfcf",
   otherText: "#202020",
+  todayBg: "#4a6fa5", //
+  todayText: "#ffffff",
 };

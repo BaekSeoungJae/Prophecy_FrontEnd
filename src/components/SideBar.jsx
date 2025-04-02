@@ -15,7 +15,7 @@ import SettingPopup from "../common/SettingPopup";
 
 const SidebarContainer = styled.aside`
   background-color: ${({ theme }) => theme.sidebarBg};
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,7 +64,7 @@ const IconButton = styled(Link)`
   text-decoration: none;
   background-color: ${({ $active, theme }) =>
     $active ? theme.sideBtnBg : "transparent"};
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease-in-out;
 
   &:hover {
     color: #2c2c2c;
@@ -74,7 +74,6 @@ const IconButton = styled(Link)`
   @media (max-width: 768px) {
     width: 60px;
     margin: 10px;
-    background-color: transparent;
 
     &:hover {
       background-color: transparent;

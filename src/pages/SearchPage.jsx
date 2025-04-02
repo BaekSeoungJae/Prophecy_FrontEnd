@@ -9,7 +9,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.background};
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease-in-out;
 `;
 
 const SearchPage = () => {
