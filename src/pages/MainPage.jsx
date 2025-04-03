@@ -28,6 +28,7 @@ const MainWrapper = styled.div`
   transition: all 0.3s ease-in-out;
   border-radius: 20px;
   flex-shrink: 0; // ✅ 모바일에서 아래에서 위로 슬라이드
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   @media (max-width: 1200px) {
     width: ${({ showProphecy }) => (showProphecy ? "100%" : "100%")};
   }
@@ -53,6 +54,7 @@ const ProphecyPanel = styled.div`
   position: absolute;
   right: 0px;
   border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   // ✅ 모바일에서 아래에서 위로 슬라이드
   @media (max-width: 768px) {
