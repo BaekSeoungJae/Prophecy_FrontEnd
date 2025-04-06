@@ -15,7 +15,7 @@ export const lightTheme = {
   calendarBorder: "#dadada",
   calendarDateText: "#111",
   otherText: "#b8b8b8",
-  todayBg: "#99acdb", // 오늘날짜
+  todayBg: "#99acdb",
   todayText: "#000000",
   sunText: "#e05d5d",
   satText: "#5f61e7",
