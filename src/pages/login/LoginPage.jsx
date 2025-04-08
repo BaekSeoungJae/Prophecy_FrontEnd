@@ -1,8 +1,9 @@
 // src/pages/LoginPage.jsx
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import AxiosApi from "../../api/AxiosApi";
+import Common from "../../utils/Common";
 
 const Container = styled.div`
   height: 100vh;
@@ -47,14 +48,11 @@ const LoginPage = () => {
   const handleKakaoLogin = () => {
     window.Kakao.Auth.login({
       scope: "profile_nickname, profile_image",
-      success: function (authObj) {
-        console.log("✅ 로그인 성공!", authObj);
-
+      success: function () {
         window.Kakao.API.request({
           url: "/v2/user/me",
-          success: function (res) {
-            const kakaoAccount = res.kakao_account;
-            const profile = kakaoAccount.profile;
+          success: async function (res) {
+            const profile = res.kakao_account.profile;
 
             const payload = {
               oauthProvider: "kakao",
@@ -63,16 +61,19 @@ const LoginPage = () => {
               profileImageUrl: profile.profile_image_url,
             };
 
-            axios
-              .post("http://localhost:8111/api/auth/oauth", payload)
-              .then((res) => {
-                const token = res.data.token;
-                localStorage.setItem("token", token); // 저장
-                navigate("/"); // 홈으로 이동
-              })
-              .catch((err) => {
-                console.error("❌ 백엔드 오류:", err);
-              });
+            try {
+              const response = await AxiosApi.socialLogin(
+                payload.oauthProvider,
+                payload.oauthId,
+                payload.nickname,
+                payload.profileImageUrl
+              );
+              const token = response.data.token;
+              Common.setAccessToken(token); // 저장
+              navigate("/"); // 홈으로 이동
+            } catch (err) {
+              console.error("❌ 백엔드 오류:", err);
+            }
           },
           fail: function (error) {
             console.error("사용자 정보 요청 실패", error);
