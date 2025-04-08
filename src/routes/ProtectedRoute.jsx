@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  height: 100vh;
+  height: calc(100vh - 60px);
   padding: 0 20px;
   display: flex;
   flex-direction: column;

@@ -1,9 +1,10 @@
 // src/pages/LoginPage.jsx
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import AxiosApi from "../../api/AxiosApi";
 import Common from "../../utils/Common";
+import Spinner from "../../common/Spinner";
 
 const Container = styled.div`
   height: 100vh;
@@ -79,6 +80,7 @@ const Footer = styled.div`
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false); // ✅ 로딩 상태 추가
 
   useEffect(() => {
     if (window.Kakao && !window.Kakao.isInitialized()) {
@@ -88,6 +90,7 @@ const LoginPage = () => {
   }, []);
 
   const handleKakaoLogin = () => {
+    setIsLoading(true); // ✅ 로딩 시작
     window.Kakao.Auth.login({
       scope: "profile_nickname, profile_image",
       success: function () {
@@ -133,9 +136,15 @@ const LoginPage = () => {
       <TopSection>
         <LogoPlaceholder /> {/* 로고 자리 */}
         <Title>Prophecy</Title>
-        <Button onClick={handleKakaoLogin}>카카오로 로그인하기</Button>
-        <Button disabled>구글로 로그인하기</Button>
-        <Button disabled>네이버로 로그인하기</Button>
+        {isLoading ? (
+          <Spinner /> // ✅ 로딩 중이면 스피너
+        ) : (
+          <>
+            <Button onClick={handleKakaoLogin}>카카오로 로그인하기</Button>
+            <Button disabled>구글로 로그인하기</Button>
+            <Button disabled>네이버로 로그인하기</Button>
+          </>
+        )}
       </TopSection>
 
       <Footer>

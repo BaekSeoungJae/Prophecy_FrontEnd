@@ -1,9 +1,10 @@
 // src/components/LoginModal.jsx
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import AxiosApi from "../api/AxiosApi";
 import Common from "../utils/Common";
+import Spinner from "./Spinner";
 
 const zoomIn = keyframes`
   from {
@@ -92,6 +93,7 @@ const CloseButton = styled.button`
 
 const LoginModal = ({ onClose }) => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false); // ✅ 로딩 상태 추가
 
   useEffect(() => {
     if (window.Kakao && !window.Kakao.isInitialized()) {
@@ -101,6 +103,7 @@ const LoginModal = ({ onClose }) => {
   }, []);
 
   const handleKakaoLogin = () => {
+    setIsLoading(true); // ✅ 로딩 시작
     window.Kakao.Auth.login({
       scope: "profile_nickname, profile_image",
       success: function () {
@@ -147,9 +150,15 @@ const LoginModal = ({ onClose }) => {
       <ModalBox>
         <CloseButton onClick={onClose}>×</CloseButton>
         <Title>로그인이 필요합니다</Title>
-        <KakaoButton onClick={handleKakaoLogin}>
-          카카오로 로그인하기
-        </KakaoButton>
+        {isLoading ? (
+          <Spinner /> // ✅ 로딩 중이면 스피너
+        ) : (
+          <>
+            <KakaoButton onClick={handleKakaoLogin}>
+              카카오로 로그인하기
+            </KakaoButton>
+          </>
+        )}
       </ModalBox>
     </>
   );
