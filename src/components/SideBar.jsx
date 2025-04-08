@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { HiOutlineCalendar, HiCalendar } from "react-icons/hi";
 import { FaRegUser, FaUser } from "react-icons/fa";
 import {
@@ -85,17 +85,8 @@ const IconButton = styled(Link)`
 
 const SideBar = ({ toggleTheme, isDarkMode }) => {
   const location = useLocation();
-  const navigate = useNavigate();
   const [isSettingOpen, setIsSettingOpen] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
-
-  const handleProtectedRoute = (path) => {
-    if (!Common.isLoggedIn()) {
-      setShowLoginModal(true);
-      return;
-    }
-    navigate(path);
-  };
 
   return (
     <>

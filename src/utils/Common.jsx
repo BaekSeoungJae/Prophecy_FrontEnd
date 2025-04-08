@@ -17,6 +17,12 @@ const Common = {
     return !!token;
   },
 
+  // 로그아웃
+  clearTokens: () => {
+    localStorage.clear();
+    sessionStorage.clear();
+  },
+
   // 날짜 관련 유틸 함수
   timeFromNow: (timestamp) => {
     return moment(timestamp).fromNow();
