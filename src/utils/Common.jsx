@@ -9,6 +9,14 @@ const Common = {
   PP_DOMAIN: "http://localhost:8111",
   PP_SOCKET_URL: "ws://localhost:8111/ws/chat",
 
+  //로그인 상태관리
+  isLoggedIn: () => {
+    const token =
+      localStorage.getItem("accessToken") ||
+      sessionStorage.getItem("accessToken");
+    return !!token;
+  },
+
   // 날짜 관련 유틸 함수
   timeFromNow: (timestamp) => {
     return moment(timestamp).fromNow();

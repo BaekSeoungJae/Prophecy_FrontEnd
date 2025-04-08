@@ -8,30 +8,72 @@ import Common from "../../utils/Common";
 const Container = styled.div`
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  padding: 10px 10px;
   background-color: ${({ theme }) => theme.background};
 `;
 
-const Logo = styled.h1`
-  font-size: 32px;
-  margin-bottom: 40px;
+const TopSection = styled.div`
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
-const KakaoButton = styled.button`
-  background-color: #fee500;
-  border: none;
-  padding: 12px 24px;
-  font-size: 16px;
+const LogoPlaceholder = styled.div`
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ddd;
+  margin-bottom: 20px;
+`;
+
+const Title = styled.h1`
+  font-size: 32px;
   font-weight: bold;
+  margin-bottom: 20px;
+`;
+
+const Button = styled.button`
+  background-color: #fee500;
   color: #3c1e1e;
+  font-weight: bold;
+  padding: 12px 24px;
   border-radius: 8px;
+  border: none;
   cursor: pointer;
+  font-size: 14px;
+  margin: 10px 0;
+  width: 220px;
   transition: 0.3s;
 
   &:hover {
     opacity: 0.9;
+  }
+
+  &:disabled {
+    background-color: #eee;
+    color: #aaa;
+    cursor: default;
+  }
+`;
+
+const Footer = styled.div`
+  font-size: 8px;
+  color: #888;
+  text-align: center;
+
+  a {
+    margin: 0 8px;
+    color: #666;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
 
@@ -88,8 +130,19 @@ const LoginPage = () => {
 
   return (
     <Container>
-      <Logo>🧙‍♀️ Prophecy</Logo>
-      <KakaoButton onClick={handleKakaoLogin}>카카오로 로그인하기</KakaoButton>
+      <TopSection>
+        <LogoPlaceholder /> {/* 로고 자리 */}
+        <Title>Prophecy</Title>
+        <Button onClick={handleKakaoLogin}>카카오로 로그인하기</Button>
+        <Button disabled>구글로 로그인하기</Button>
+        <Button disabled>네이버로 로그인하기</Button>
+      </TopSection>
+
+      <Footer>
+        © 2025 Prophecy |<a href="/">이용약관</a>|
+        <a href="/">개인정보처리방침</a>|<a href="/">쿠키 정책</a>|
+        <a href="/">문제 신고</a>
+      </Footer>
     </Container>
   );
 };

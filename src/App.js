@@ -35,38 +35,10 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="/search"
-              element={
-                <ProtectedRoute>
-                  <SearchPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/feed"
-              element={
-                <ProtectedRoute>
-                  <FeedPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/shop"
-              element={
-                <ProtectedRoute>
-                  <ShopPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/mypage"
-              element={
-                <ProtectedRoute>
-                  <MyPage />
-                </ProtectedRoute>
-              }
-            />
+            <Route path="/search" element={<SearchPage />} />
+            <Route path="/feed" element={<FeedPage />} />
+            <Route path="/shop" element={<ShopPage />} />
+            <Route path="/mypage" element={<MyPage />} />
           </Route>
         </Routes>
       </Router>

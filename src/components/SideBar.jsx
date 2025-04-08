@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { HiOutlineCalendar, HiCalendar } from "react-icons/hi";
 import { FaRegUser, FaUser } from "react-icons/fa";
 import {
@@ -12,6 +12,8 @@ import {
   RiSearchFill,
 } from "react-icons/ri";
 import SettingPopup from "../common/SettingPopup";
+import Common from "../utils/Common";
+import LoginModal from "../common/LoginModal";
 
 const SidebarContainer = styled.aside`
   background-color: ${({ theme }) => theme.sidebarBg};
@@ -83,52 +85,101 @@ const IconButton = styled(Link)`
 
 const SideBar = ({ toggleTheme, isDarkMode }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isSettingOpen, setIsSettingOpen] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
+  const handleProtectedRoute = (path) => {
+    if (!Common.isLoggedIn()) {
+      setShowLoginModal(true);
+      return;
+    }
+    navigate(path);
+  };
 
   return (
-    <SidebarContainer>
-      <IconGroup>
-        <IconButton to="/feed" $active={location.pathname === "/feed"}>
-          {location.pathname === "/feed" ? (
-            <RiHome5Fill size={30} />
-          ) : (
-            <RiHome5Line size={30} />
-          )}
-        </IconButton>
-        <IconButton to="/search" $active={location.pathname === "/search"}>
-          {location.pathname === "/search" ? (
-            <RiSearchFill />
-          ) : (
-            <RiSearchLine />
-          )}
-        </IconButton>
-        <IconButton to="/" $active={location.pathname === "/"}>
-          {location.pathname === "/" ? <HiCalendar /> : <HiOutlineCalendar />}
-        </IconButton>
-        <IconButton to="/shop" $active={location.pathname === "/shop"}>
-          {location.pathname === "/shop" ? (
-            <RiShoppingBagFill />
-          ) : (
-            <RiShoppingBagLine />
-          )}
-        </IconButton>
-        <IconButton to="/mypage" $active={location.pathname === "/mypage"}>
-          {location.pathname === "/mypage" ? (
-            <FaUser size={24} />
-          ) : (
-            <FaRegUser size={24} />
-          )}
-        </IconButton>
-      </IconGroup>
+    <>
+      <SidebarContainer>
+        <IconGroup>
+          <IconButton
+            to={Common.isLoggedIn() ? "/feed" : ""}
+            onClick={(e) => {
+              if (!Common.isLoggedIn()) {
+                e.preventDefault(); // 링크 동작 막기
+                setShowLoginModal(true);
+              }
+            }}
+            $active={location.pathname === "/feed"}
+          >
+            {location.pathname === "/feed" ? <RiHome5Fill /> : <RiHome5Line />}
+          </IconButton>
+          <IconButton
+            to={Common.isLoggedIn() ? "/search" : ""}
+            onClick={(e) => {
+              if (!Common.isLoggedIn()) {
+                e.preventDefault(); // 링크 동작 막기
+                setShowLoginModal(true);
+              }
+            }}
+            $active={location.pathname === "/search"}
+          >
+            {location.pathname === "/search" ? (
+              <RiSearchFill />
+            ) : (
+              <RiSearchLine />
+            )}
+          </IconButton>
+          <IconButton to="/" $active={location.pathname === "/"}>
+            {location.pathname === "/" ? <HiCalendar /> : <HiOutlineCalendar />}
+          </IconButton>
+          <IconButton
+            to={Common.isLoggedIn() ? "/shop" : ""}
+            onClick={(e) => {
+              if (!Common.isLoggedIn()) {
+                e.preventDefault(); // 링크 동작 막기
+                setShowLoginModal(true);
+              }
+            }}
+            $active={location.pathname === "/shop"}
+          >
+            {location.pathname === "/shop" ? (
+              <RiShoppingBagFill />
+            ) : (
+              <RiShoppingBagLine />
+            )}
+          </IconButton>
+          <IconButton
+            to={Common.isLoggedIn() ? "/mypage" : ""}
+            onClick={(e) => {
+              if (!Common.isLoggedIn()) {
+                e.preventDefault(); // 링크 동작 막기
+                setShowLoginModal(true);
+              }
+            }}
+            $active={location.pathname === "/mypage"}
+          >
+            {location.pathname === "/mypage" ? (
+              <FaUser size={24} />
+            ) : (
+              <FaRegUser size={24} />
+            )}
+          </IconButton>
+        </IconGroup>
 
-      {/* 설정 버튼 + 팝업 */}
-      <SettingPopup
-        isOpen={isSettingOpen}
-        setIsOpen={setIsSettingOpen}
-        toggleTheme={toggleTheme}
-        isDarkMode={isDarkMode}
-      />
-    </SidebarContainer>
+        {/* 설정 버튼 + 팝업 */}
+        <SettingPopup
+          isOpen={isSettingOpen}
+          setIsOpen={setIsSettingOpen}
+          toggleTheme={toggleTheme}
+          isDarkMode={isDarkMode}
+        />
+      </SidebarContainer>
+      {showLoginModal && (
+        <>
+          <LoginModal onClose={() => setShowLoginModal(false)} />
+        </>
+      )}
+    </>
   );
 };
 export default SideBar;
