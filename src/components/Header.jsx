@@ -109,6 +109,7 @@ const Header = () => {
     Common.clearTokens();
     setUserInfo(null);
     navigate("/");
+    window.location.reload();
   };
 
   return (
