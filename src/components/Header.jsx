@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import AxiosApi from "../api/AxiosApi";
 import Common from "../utils/Common";
-// import defaultProfile from "../assets/defaultProfile.png";
 
 const Container = styled.div`
   width: 100%;
